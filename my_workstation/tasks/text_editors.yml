@@ -1,0 +1,14 @@
+---
+
+- name: Установить текстовые редакторы
+  package:
+    name:
+      - nano
+      - vim
+      - gedit
+      - kate
+      - neovim
+    state: latest
+  when: ansible_os_family == "Debian"
+
+...

@@ -1,0 +1,13 @@
+---
+
+- import_tasks: apt_update.yml
+- import_tasks: text_editors.yml
+- import_tasks: terminal_utils.yml
+- import_tasks: ios_support.yml
+- import_tasks: archive_tools.yml
+- import_tasks: sysadmin_tools.yml
+- import_tasks: network_tools.yml
+- import_tasks: security_tools.yml
+- import_tasks: development_tools.yml
+
+...

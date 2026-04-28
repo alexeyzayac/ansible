@@ -1,0 +1,17 @@
+---
+
+- name: Установить сетевые утилиты
+  package:
+    name:
+      - net-tools
+      - curl
+      - wget
+      - nmap
+      - traceroute
+      - mtr
+      - tcpdump
+      - iperf3
+    state: latest
+  when: ansible_os_family == "Debian"
+
+...

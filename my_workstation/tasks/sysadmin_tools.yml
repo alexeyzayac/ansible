@@ -1,0 +1,16 @@
+---
+
+- name: Установить дополнительные утилиты для администрирования
+  package:
+    name:
+      - rsync
+      - screen
+      - ncdu
+      - iotop
+      - lsof
+      - strace
+      - sysstat
+    state: latest
+  when: ansible_os_family == "Debian"
+
+...

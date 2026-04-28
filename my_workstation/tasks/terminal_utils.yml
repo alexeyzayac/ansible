@@ -1,0 +1,13 @@
+---
+
+- name: Установить утилиты командной строки 
+  package:
+    name:
+      - tmux
+      - mc
+      - konsole
+      - htop
+    state: latest
+  when: ansible_os_family == "Debian"
+
+...

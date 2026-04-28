@@ -1,0 +1,14 @@
+---
+
+- name: Установить инструменты безопасности
+  package:
+    name:
+      - fail2ban
+      - ufw
+      - clamav
+      - rkhunter
+      - lynis
+    state: latest
+  when: ansible_os_family == "Debian"
+
+...

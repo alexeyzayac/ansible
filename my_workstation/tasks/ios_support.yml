@@ -1,0 +1,14 @@
+---
+
+- name: Установить общие пакеты для работы с Apple-устройствами
+  package:
+    name:
+      - usbmuxd
+      - libimobiledevice-utils
+      - libusbmuxd-tools
+      - ifuse
+      - uxplay
+    state: latest
+  when: ansible_os_family == "Debian"
+
+...
