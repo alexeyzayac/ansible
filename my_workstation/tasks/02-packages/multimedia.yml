@@ -1,0 +1,33 @@
+---
+
+- name: Установить медиаплееры и кодеки
+  ansible.builtin.package:
+    name:
+      - vlc
+      - mpv
+      - audacious
+      - ffmpeg
+      - gstreamer1.0-plugins-ugly
+      - gstreamer1.0-plugins-bad
+      - gstreamer1.0-libav
+    state: latest
+  when: ansible_facts['os_family'] == "Debian"
+
+- name: Установить графические редакторы
+  ansible.builtin.package:
+    name:
+      - gimp
+      - inkscape
+      - krita
+      - blender
+      - kolourpaint
+    state: latest
+  when: ansible_facts['os_family'] == "Debian"
+
+- name: Установить инструменты для видео-монтажа
+  ansible.builtin.package:
+    name:
+      - kdenlive
+    state: latest
+  when: ansible_facts['os_family'] == "Debian"
+...

@@ -1,0 +1,9 @@
+---
+- name: Установить офисные и ознакомительные программы
+  ansible.builtin.package:
+    name:
+      - okular
+      - libreoffice
+      - evince
+    state: latest
+  when: ansible_facts['os_family'] == "Debian"

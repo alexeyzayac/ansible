@@ -1,26 +1,25 @@
 ---
 
+# Система
+- import_tasks: 00-system/apt.yml
+- import_tasks: 00-system/cron-jobs.yml
+
 # Конфиги
-- import_tasks: copy_configs_skel_root.yml
-- import_tasks: existing_users_configs.yml
-- import_tasks: cron.yml
+- import_tasks: 01-configs/skel-dotfiles.yml
+- import_tasks: 01-configs/user-dotfiles.yml
 
 # Пакеты
-- import_tasks: apt_update.yml
-- import_tasks: text_editors.yml
-- import_tasks: terminal_utils.yml
-- import_tasks: ios_support.yml
-- import_tasks: archive_tools.yml
-- import_tasks: sysadmin_tools.yml
-- import_tasks: network_tools.yml
-- import_tasks: security_tools.yml
-- import_tasks: development_tools.yml
-- import_tasks: media.yml
-
-# Гипервизор 
-- import_tasks: hypervisors.yml
-
-# Докер
-- import_tasks: docker.yml
+- import_tasks: 02-packages/archivers.yml
+- import_tasks: 02-packages/editors.yml
+- import_tasks: 02-packages/terminal.yml
+- import_tasks: 02-packages/apple.yml
+- import_tasks: 02-packages/sysadmin.yml
+- import_tasks: 02-packages/network.yml
+- import_tasks: 02-packages/security.yml
+- import_tasks: 02-packages/dev.yml
+- import_tasks: 02-packages/multimedia.yml
+- import_tasks: 02-packages/hypervisors.yml
+- import_tasks: 02-packages/docker.yml
+- import_tasks: 02-packages/office.yml
 
 ...
