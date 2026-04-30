@@ -1,15 +1,13 @@
 ---
 
 - name: Установить архиваторы
-  package:
+  ansible.builtin.package:
     name:
       - tar
       - zip
       - unzip
       - p7zip-full
-      - rar
-      - unrar
     state: latest
-  when: ansible_os_family == "Debian"
+  when: ansible_facts['os_family'] == "Debian"
 
 ...

@@ -1,0 +1,51 @@
+---
+
+- name: Копировать .bashrc в skel
+  ansible.builtin.template:
+    src: .bashrc.j2
+    dest: "/etc/skel/.bashrc"
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Копировать .nanorc в skel
+  ansible.builtin.template:
+    src: .nanorc.j2
+    dest: "/etc/skel/.nanorc"
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Копировать .vimrc в skel
+  ansible.builtin.template:
+    src: .vimrc.j2
+    dest: "/etc/skel/.vimrc"
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Копировать .bashrc для root
+  ansible.builtin.template:
+    src: .bashrc.j2
+    dest: "/root/.bashrc"
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Копировать .nanorc для root
+  ansible.builtin.template:
+    src: .nanorc.j2
+    dest: "/root/.nanorc"
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Копировать .vimrc для root
+  ansible.builtin.template:
+    src: .vimrc.j2
+    dest: "/root/.vimrc"
+    owner: root
+    group: root
+    mode: '0644'
+    
+...

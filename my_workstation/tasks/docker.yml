@@ -1,0 +1,74 @@
+---
+
+- name: Создать /etc/apt/keyrings
+  ansible.builtin.file:
+    path: /etc/apt/keyrings
+    state: directory
+    mode: '0755'
+
+- name: Скачать официальный GPG-ключ Docker
+  ansible.builtin.get_url:
+    url: https://download.docker.com/linux/debian/gpg
+    dest: /etc/apt/keyrings/docker.asc
+    mode: '0644'
+    force: true
+
+- name: Получить архитектуру Debian
+  ansible.builtin.command: dpkg --print-architecture
+  register: deb_arch
+  changed_when: false
+
+- name: Добавить репозиторий Docker
+  ansible.builtin.copy:
+    dest: /etc/apt/sources.list.d/docker.sources
+    content: |
+      Types: deb
+      URIs: https://download.docker.com/linux/debian
+      Suites: {{ ansible_facts['distribution_release'] }}
+      Components: stable
+      Architectures: {{ deb_arch.stdout }}
+      Signed-By: /etc/apt/keyrings/docker.asc
+    mode: '0644'
+  when: ansible_facts['os_family'] == "Debian"
+
+- name: Обновить кэш apt
+  ansible.builtin.apt:
+    update_cache: true
+
+- name: Установить общие пакеты для работы с Docker
+  ansible.builtin.apt:
+    name:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+      - docker-buildx-plugin
+      - docker-compose-plugin
+    state: latest
+  when: ansible_facts['os_family'] == "Debian"
+
+- name: Запустить сервис docker.service
+  ansible.builtin.systemd:
+    name: docker.service
+    state: started
+    enabled: true
+
+- name: Запустить сервис containerd.service
+  ansible.builtin.systemd:
+    name: containerd.service
+    state: started
+    enabled: true
+
+- name: Создать группу docker (если их нет)
+  ansible.builtin.group:
+    name: docker
+    state: present
+
+- name: Добавить всех пользователей из /home/* в группы
+  ansible.builtin.shell: 
+    cmd: |
+      for user in /home/*; do
+        username=$(basename "$user")
+        usermod -aG docker "$username" 2>/dev/null
+      done
+
+...

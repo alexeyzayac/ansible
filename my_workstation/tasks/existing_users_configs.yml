@@ -1,0 +1,22 @@
+---
+
+- name: Найти все домашние папки пользователей в /home
+  ansible.builtin.find:
+    paths: /home          # в каком каталоге искать
+    file_type: directory  # ищем только каталоги
+    recurse: no           # не заходить внутрь (ищем только прямые подпапки)
+  register: found_homes   # сохраняем результат в переменную found_homes
+
+- name: Скопировать конфигурационные файлы в каждую найденную папку
+  ansible.builtin.template:
+    src: "{{ item.1 }}.j2"                  # какой файл копируем (из files/)
+    dest: "{{ item.0.path }}/{{ item.1 }}"  # куда копируем: папка пользователя + имя файла
+    owner: "{{ item.0.path | basename }}"   # владелец = имя папки (логин пользователя)
+    group: "{{ item.0.path | basename }}"   # группа = имя папки
+    mode: '0644'                            # права: rw-r--r--
+    backup: yes                             # создать резервную копию, если файл уже существует
+  loop: "{{ found_homes.files | product(['.bashrc', '.nanorc', '.vimrc']) | list }}"
+  # loop: перебираем все возможные комбинации (папка, файл)
+  when: found_homes.files | length > 0      # выполняем, только если есть хотя бы одна папка
+
+...

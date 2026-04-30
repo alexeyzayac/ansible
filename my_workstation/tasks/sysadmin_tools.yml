@@ -1,7 +1,7 @@
 ---
 
 - name: Установить дополнительные утилиты для администрирования
-  package:
+  ansible.builtin.package:
     name:
       - rsync
       - screen
@@ -10,7 +10,8 @@
       - lsof
       - strace
       - sysstat
+      - smartmontools
     state: latest
-  when: ansible_os_family == "Debian"
+  when: ansible_facts['os_family'] == "Debian"
 
 ...

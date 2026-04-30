@@ -1,13 +1,14 @@
 ---
 
 - name: Установить утилиты командной строки 
-  package:
+  ansible.builtin.package:
     name:
       - tmux
       - mc
       - konsole
       - htop
+      - tree
     state: latest
-  when: ansible_os_family == "Debian"
+  when: ansible_facts['os_family'] == "Debian"
 
 ...

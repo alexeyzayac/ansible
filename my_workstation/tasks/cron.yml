@@ -1,0 +1,12 @@
+---
+
+- name: Добавить задание cron для полного обновления системы
+  ansible.builtin.copy:
+    dest: /etc/cron.d/full_upgrade
+    content: |
+      00 22 * * * root /usr/bin/apt-get update && /usr/bin/apt-get -y full-upgrade && /usr/bin/apt-get -y autoremove >> /var/log/apt-upgrade.log 2>&1
+    owner: root
+    group: root
+    mode: '0644'
+
+...

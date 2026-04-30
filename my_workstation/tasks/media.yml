@@ -3,14 +3,7 @@
 - name: Установить сетевые утилиты
   ansible.builtin.package:
     name:
-      - net-tools
-      - curl
-      - wget
-      - nmap
-      - traceroute
-      - mtr
-      - tcpdump
-      - iperf3
+      - vlc
     state: latest
   when: ansible_facts['os_family'] == "Debian"
 

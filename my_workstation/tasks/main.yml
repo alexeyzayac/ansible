@@ -1,5 +1,11 @@
 ---
 
+# Конфиги
+- import_tasks: copy_configs_skel_root.yml
+- import_tasks: existing_users_configs.yml
+- import_tasks: cron.yml
+
+# Пакеты
 - import_tasks: apt_update.yml
 - import_tasks: text_editors.yml
 - import_tasks: terminal_utils.yml
@@ -9,5 +15,12 @@
 - import_tasks: network_tools.yml
 - import_tasks: security_tools.yml
 - import_tasks: development_tools.yml
+- import_tasks: media.yml
+
+# Гипервизор 
+- import_tasks: hypervisors.yml
+
+# Докер
+- import_tasks: docker.yml
 
 ...

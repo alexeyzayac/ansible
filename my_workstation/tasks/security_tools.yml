@@ -1,7 +1,7 @@
 ---
 
 - name: Установить инструменты безопасности
-  package:
+  ansible.builtin.package:
     name:
       - fail2ban
       - ufw
@@ -9,6 +9,6 @@
       - rkhunter
       - lynis
     state: latest
-  when: ansible_os_family == "Debian"
+  when: ansible_facts['os_family'] == "Debian"
 
 ...

@@ -1,7 +1,7 @@
 ---
 
 - name: Установить инструменты разработки
-  package:
+  ansible.builtin.package:
     name:
       - build-essential
       - gcc
@@ -11,7 +11,8 @@
       - python3-pip
       - nodejs
       - npm
+      - yamllint
     state: latest
-  when: ansible_os_family == "Debian"
+  when: ansible_facts['os_family'] == "Debian"
 
 ...
