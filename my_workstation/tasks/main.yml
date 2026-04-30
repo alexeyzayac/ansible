@@ -2,24 +2,72 @@
 
 # Система
 - import_tasks: 00-system/apt.yml
+  tags:
+    - system
+    - apt
 - import_tasks: 00-system/cron-jobs.yml
+  tags:
+    - system
+    - cron
 
 # Конфиги
 - import_tasks: 01-configs/skel-dotfiles.yml
+  tags:
+    - configs
+    - skel
 - import_tasks: 01-configs/user-dotfiles.yml
+  tags:
+    - configs
+    - user
 
 # Пакеты
 - import_tasks: 02-packages/archivers.yml
+  tags:
+    - packages
+    - archivers
 - import_tasks: 02-packages/editors.yml
+  tags:
+    - packages
+    - editors
 - import_tasks: 02-packages/terminal.yml
+  tags:
+    - packages
+    - terminal
 - import_tasks: 02-packages/apple.yml
+  tags:
+    - packages
+    - apple
 - import_tasks: 02-packages/sysadmin.yml
+  tags:
+    - packages
+    - sysadmin
 - import_tasks: 02-packages/network.yml
+  tags:
+    - packages
+    - network
 - import_tasks: 02-packages/security.yml
+  tags:
+    - packages
+    - security
 - import_tasks: 02-packages/dev.yml
+  tags:
+    - packages
+    - dev
 - import_tasks: 02-packages/multimedia.yml
+  tags:
+    - packages
+    - multimedia
 - import_tasks: 02-packages/hypervisors.yml
+  tags:
+    - packages
+    - hypervisors
 - import_tasks: 02-packages/docker.yml
+  tags:
+    - packages
+    - docker
 - import_tasks: 02-packages/office.yml
+  tags:
+    - packages
+    - office
 
 ...
