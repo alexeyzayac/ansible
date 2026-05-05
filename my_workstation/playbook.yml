@@ -3,10 +3,7 @@
 - name: Настроить рабочую станцию
   hosts: localhost
   connection: local
-  become: yes
-  gather_facts: yes
-  vars:
-    ansible_python_interpreter: /usr/bin/python3
+  gather_facts: true
   tasks:
     - import_tasks: tasks/main.yml
 

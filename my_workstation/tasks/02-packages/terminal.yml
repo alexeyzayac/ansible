@@ -8,6 +8,7 @@
       - konsole
       - htop
       - tree
+      - bat
     state: latest
   when: ansible_facts['os_family'] == "Debian"
 
