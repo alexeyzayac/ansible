@@ -12,6 +12,5 @@
       - tcpdump
       - iperf3
     state: latest
-  when: ansible_facts['os_family'] == "Debian"
 
 ...

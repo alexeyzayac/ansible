@@ -4,8 +4,6 @@
   ansible.builtin.apt:
     update_cache: yes
     cache_valid_time: 3600
-  when: 
-    - ansible_facts['os_family'] == "Debian"
-    - ansible_facts['pkg_mgr'] == "apt"
+    upgrade: full
 
 ...

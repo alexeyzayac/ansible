@@ -29,7 +29,6 @@
       Architectures: {{ deb_arch.stdout }}
       Signed-By: /etc/apt/keyrings/docker.asc
     mode: '0644'
-  when: ansible_facts['os_family'] == "Debian"
 
 - name: Обновить кэш apt
   ansible.builtin.apt:
@@ -44,7 +43,6 @@
       - docker-buildx-plugin
       - docker-compose-plugin
     state: latest
-  when: ansible_facts['os_family'] == "Debian"
 
 - name: Запустить сервис docker.service
   ansible.builtin.systemd:

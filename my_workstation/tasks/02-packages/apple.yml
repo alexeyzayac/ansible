@@ -9,6 +9,5 @@
       - ifuse
       - uxplay
     state: latest
-  when: ansible_facts['os_family'] == "Debian"
 
 ...

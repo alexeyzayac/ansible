@@ -11,7 +11,6 @@
       - gstreamer1.0-plugins-bad
       - gstreamer1.0-libav
     state: latest
-  when: ansible_facts['os_family'] == "Debian"
 
 - name: Установить графические редакторы
   ansible.builtin.package:
@@ -22,12 +21,11 @@
       - blender
       - kolourpaint
     state: latest
-  when: ansible_facts['os_family'] == "Debian"
 
 - name: Установить инструменты для видео-монтажа
   ansible.builtin.package:
     name:
       - kdenlive
     state: latest
-  when: ansible_facts['os_family'] == "Debian"
+
 ...

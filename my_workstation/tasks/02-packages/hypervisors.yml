@@ -14,7 +14,6 @@
       - pkg-config
       - ruby-dev
     state: latest
-  when: ansible_facts['os_family'] == "Debian"
 
 - name: Установить общие пакеты для работы с VirtualBox
   ansible.builtin.package:
@@ -27,7 +26,6 @@
       - lsb-release
       - "linux-headers-{{ ansible_facts.kernel }}"
     state: latest
-  when: ansible_facts['os_family'] == "Debian"
 
 - name: Добавить ключ VirtualBox
   ansible.builtin.shell:

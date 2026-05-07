@@ -8,6 +8,5 @@
       - unzip
       - p7zip-full
     state: latest
-  when: ansible_facts['os_family'] == "Debian"
 
 ...

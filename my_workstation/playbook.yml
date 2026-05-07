@@ -3,8 +3,9 @@
 - name: Настроить рабочую станцию
   hosts: localhost
   connection: local
+  become: true
   gather_facts: true
-  tasks:
-    - import_tasks: tasks/main.yml
+  roles:
+    - ../my_workstation
 
 ...
