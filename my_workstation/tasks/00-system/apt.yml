@@ -6,4 +6,17 @@
     cache_valid_time: 3600
     upgrade: full
 
+- name: Удалить ненужные автоматически установленные пакеты
+  ansible.builtin.apt:
+    autoremove: true
+
+- name: Очистить локальный кэш устаревших пакетов
+  ansible.builtin.apt:
+    autoclean: true
+
+- name: Удалить конфигурационные файлы ранее удалённых пакетов
+  ansible.builtin.command: |
+    apt purge ~c -y
+  changed_when: false # обычно эта команда ничего не меняет, если нет конфигов
+
 ...
