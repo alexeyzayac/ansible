@@ -12,6 +12,7 @@
       - nodejs
       - npm
       - yamllint
+      - ansible-lint
     state: latest
 
 ...

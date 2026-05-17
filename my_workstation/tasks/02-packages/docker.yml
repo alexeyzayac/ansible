@@ -61,10 +61,6 @@
     name: docker
     state: present
 
-
-
-
-
 - name: Добавить всех пользователей из /home/* в группы
   ansible.builtin.shell: |
       for user in /home/*; do
